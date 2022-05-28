@@ -1,0 +1,35 @@
+body {
+    font-family:'Kanit', sans-serif !important;
+}
+
+.text-avater{
+    font-family: 'Kanit' ;
+    font-style: normal ;
+    font-weight: 500 ;
+    font-size: 18px ;
+}
+  
+
+.bg-blue{
+    background: #134B8A;
+}
+
+.text-title {
+    font-size: 24px;
+}
+.text-select{
+font-style: normal;
+font-weight: 400;
+color: rgba(0, 0, 0, 0.54);
+
+}
+
+.text-size-18 {
+    font-size: 18px;
+}
+
+.text-center-18 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 100px;
+}
