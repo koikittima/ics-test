@@ -1,30 +1,30 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardHeader, Avatar, ImageList, ImageListItem } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import Iconify from '../component/Iconify';
-import { Grid, Stack, Container } from '@mui/material';
+import Iconify from './Iconify';
+import { Grid, Stack } from '@mui/material';
 
-function BoxcardImage(props) {
+function BoxcardPlace(props) {
+    const navigate = useNavigate();
 
     const componentStyles = {
         width: '5rem',
         height: '5rem',
     }
-    console.log('BoxcardImage', props);
 
     return (
-        <Card sx={{ maxWidth: 300, ml: 6, mt: 6 }}>
+        <Card sx={{ borderRadius: '16px', maxWidth: 300, ml: 6, mt: 6 }}
+            onClick={() => navigate(`/place-detail/${props.item.id}`, { state: { id: props.item.id } })}
+        >
             <Grid spacing={2}>
                 <CardActionArea sx={{ position: 'relative' }}>
                     <CardHeader
                         avatar={
                             <Avatar variant='rounded' aria-lang='recipe' src={props.item.profile_image_url} />
                         }
-                        // className='text-avater'
                         title={props.item?.name}
                         subheader={
                             <Stack direction="row" alignItems="center" justifyContent="space-between">
@@ -32,15 +32,14 @@ function BoxcardImage(props) {
                                     <Iconify icon={'akar-icons:calendar'} width={20} height={20} sx={{ mr: 1 }} />
                                     <span> {`${props.item.operation_time[0].time_open} - ${props.item.operation_time[0].time_open}`} </span>
                                 </Typography>
-                                
+
                                 <Typography variant='body2' color="textSecondary" sx={{ display: 'flex', alignItems: 'center' }}>
                                     <Iconify icon={'emojione:star'} width={20} height={20} sx={{ mr: 1 }} />
                                     <span> {`${props.item.rating}`} </span>
                                 </Typography>
-                                
+
                             </Stack>
                         }
-                    // subheader={`${props.item.operation_time[0].time_open} - ${props.item.operation_time[0].time_open}`}
                     />
 
                     <CardContent>
@@ -75,4 +74,4 @@ function BoxcardImage(props) {
 }
 
 
-export default BoxcardImage
+export default BoxcardPlace

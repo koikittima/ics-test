@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import { Grid, Stack, Container, TablePagination } from '@mui/material';
 import InputSelect from '../component/InputSelect';
 import InputSearch from '../component/InputSearch';
-import BoxcardImage from '../component/BoxcardImage';
-import DataFood from '../Json/example_data.json';
+import BoxcardPlace from '../component/BoxcardPlace';
+import DataPlace from '../Json/example_data.json';
 import { filter } from 'lodash';
 import Typography from '@mui/material/Typography';
 
@@ -37,27 +37,28 @@ function applySortFilter(array, comparator, query) {
     return stabilizedThis.map((el) => el[0]);
 }
 
+
 function Home() {
     const [selected, setSelected] = useState([]);
     const [placeName, setPlaceName] = useState('');
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('name');
 
-    const [countryList, setCountryLis] = useState([
-        { value: "1", label: "Restaurant" },
-        { value: "2", label: "Bakery" },
-        { value: "3", label: "Cafe" }
+    const [placeList, setPlaceList] = useState([
+        { value: "restaurant", label: "Restaurant" },
+        { value: "bakery", label: "Bakery" },
+        { value: "cafe", label: "Cafe" }
     ]);
-    const [countrySelectValue, setCountrySelectValue] = useState('');
+    const [placeSelectValue, setPlaceSelectValue] = useState('');
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(9);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(9);
 
     const handleFilterByPlaceName = (event) => {
         setPlaceName(event.target.value);
     };
 
-    const filteredPlaceName = applySortFilter(DataFood, getComparator(order, orderBy), placeName);
+    const filteredPlaceName = applySortFilter(DataPlace, getComparator(order, orderBy), placeName);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -82,16 +83,16 @@ function Home() {
                         </Grid>
                     </Grid>
 
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap' ,mr: 7 }} justifyContent="flex-end">
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', mr: 7 }} justifyContent="flex-end">
                         <div sx={{ m: 1, width: '25ch' }} variant="outlined">
                             <InputSelect
-                                selectValue={countrySelectValue} dataList={countryList}
+                                selectValue={placeSelectValue} dataList={placeList}
                                 handleChange={(event) => {
-                                    setCountrySelectValue(event.target.value);
+                                    setPlaceSelectValue(event.target.value);
                                 }}
                             />
                         </div>
-                        <div sx={{ m: 1, width: '25ch',   }} variant="outlined">
+                        <div sx={{ m: 1, width: '25ch', }} variant="outlined">
                             <InputSearch numSelected={selected.length} placeName={placeName} onFilterName={handleFilterByPlaceName} />
                         </div>
                     </Box>
@@ -99,21 +100,27 @@ function Home() {
                     <Grid container spacing={3}>
                         {filteredPlaceName && filteredPlaceName.length > 0 ?
                             filteredPlaceName.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item, i) => {
-                                return <BoxcardImage key={i} item={item} index={i} />
+                                return <BoxcardPlace key={i} item={item} index={i} />
                             })
                             :
                             <Typography sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <h5>Not Found</h5>
+                                <h5>Not Found Data</h5>
                             </Typography>
                         }
                     </Grid>
 
-                    <Box sx={{ mt: 3 }}>
+                    <Box
+                        sx={{
+                            mt: 3,
+                            display:'flex',
+                            justifyContent:'center'
+                        }}
+                    >
                         <Stack spacing={2}>
                             <TablePagination variant="outlined"
                                 rowsPerPageOptions={[9]}
                                 component="div"
-                                count={DataFood.length}
+                                count={DataPlace.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 onPageChange={handleChangePage}

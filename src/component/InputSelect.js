@@ -1,7 +1,5 @@
 import React from "react";
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
@@ -9,7 +7,6 @@ function InputSelect({ dataList, handleChange, selectValue }) {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 185 }}>
-        {/* <InputLabel id="demo-simple-select-helper-label">{title}</InputLabel> */}
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -30,7 +27,6 @@ function InputSelect({ dataList, handleChange, selectValue }) {
             </MenuItem>
           ))}
         </Select>
-        {/* <FormHelperText>With label + helper text</FormHelperText> */}
       </FormControl>
 
       <style jsx="true" global="true">{`

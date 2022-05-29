@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -26,7 +27,6 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 const drawerWidth = 240;
-
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -93,6 +93,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 function MenuNav() {
+    const navigate = useNavigate();
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -177,6 +178,7 @@ function MenuNav() {
                                         mr: open ? 3 : 'auto',
                                         justifyContent: 'center',
                                     }}
+                                    onClick={() =>  navigate(`/`)}
                                 >
                                     <img alt="User" src="/svg/place.svg"/>
                                 </ListItemIcon>

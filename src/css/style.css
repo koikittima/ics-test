@@ -9,6 +9,48 @@ body {
     font-size: 18px ;
 }
   
+.text-detail{
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+}
+.text-subdetail{
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+
+}
+
+.text-detail-title{
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.87);
+
+}
+
+.text-detail-rating{
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #134B8A;
+}
+.text-img{
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.87);
+}
+.icon-rating{
+    margin-right: 10px;
+}
 
 .bg-blue{
     background: #134B8A;
